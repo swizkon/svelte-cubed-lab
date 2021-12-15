@@ -1,6 +1,8 @@
 <script>
 	import * as THREE from 'three';
 	import * as SC from 'svelte-cubed';
+	
+	import Bike from '../components/Bike.svelte';
 
 	let width = 1;
 	let height = 0.1;
@@ -8,7 +10,6 @@
 
 	let spin = 0;
 
-	let spinIncrease = 0.01;
 
 	let boxes = [1,1,2,1,1];
 
@@ -32,17 +33,17 @@
 >
 	<SC.Group position={[0, -height / 2, 0]}>
 		<SC.Mesh
-			geometry={new THREE.PlaneGeometry(50, 50)}
+			geometry={new THREE.PlaneGeometry(100, 50)}
 			material={new THREE.MeshStandardMaterial({ color: 'burlywood' })}
 			rotation={[-Math.PI / 2, 0, 0]}
 			receiveShadow
 		/>  
 		<SC.Primitive
-			object={new THREE.GridHelper(10, 10, 'papayawhip2', 'papayawhip2')}
+			object={new THREE.GridHelper(20, 30, 'papayawhip2', 'papayawhip2')}
 			position={[0, 0.001, 0]}
 		/>
 	</SC.Group>
-
+<!-- 
 	<SC.Group 
 			rotation={[0, spin, 0]}
 			position={[spin, 0.001, 0]}>
@@ -71,9 +72,11 @@
 		/>
 	{/each}
 
-	</SC.Group>
+	</SC.Group> -->
 
-	<SC.PerspectiveCamera position={[1, 1, 5]} />
+	<Bike />
+
+	<SC.PerspectiveCamera position={[10, 5, 10]} />
 	<SC.OrbitControls enableZoom={true} maxPolarAngle={Math.PI * 0.51} />
 	<SC.AmbientLight intensity={0.6} />
 	<SC.DirectionalLight intensity={0.6} position={[-2, 3, 2]} shadow={{ mapSize: [2048, 2048] }} />
