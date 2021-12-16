@@ -2,7 +2,7 @@
 	import * as THREE from 'three';
 	import * as SC from 'svelte-cubed';
 	
-	import Bike from '../components/Bike.svelte';
+	import Bike from '../components/bike/Bike.svelte';
 
 	let width = 1;
 	let height = 0.1;
@@ -28,53 +28,25 @@
 <SC.Canvas
 	antialias
 	background={new THREE.Color('papayawhip')}
-	fog={new THREE.FogExp2('papayawhip', 0.05)}
+	fog={new THREE.FogExp2('papayawhip', 0.01)}
 	shadows
 >
 	<SC.Group position={[0, -height / 2, 0]}>
 		<SC.Mesh
-			geometry={new THREE.PlaneGeometry(100, 50)}
+			geometry={new THREE.PlaneGeometry(50, 50)}
 			material={new THREE.MeshStandardMaterial({ color: 'burlywood' })}
 			rotation={[-Math.PI / 2, 0, 0]}
 			receiveShadow
 		/>  
 		<SC.Primitive
-			object={new THREE.GridHelper(20, 30, 'papayawhip2', 'papayawhip2')}
+			object={new THREE.GridHelper(50, 30, 'papayawhip2', 'papayawhip2')}
 			position={[0, 0.001, 0]}
 		/>
 	</SC.Group>
-<!-- 
-	<SC.Group 
-			rotation={[0, spin, 0]}
-			position={[spin, 0.001, 0]}>
-		<SC.Mesh
-			geometry={new THREE.BoxGeometry()}
-			material={new THREE.MeshStandardMaterial({ color: 0xff3e00 })}
-			scale={[0.5, 0.5, 0.5]}
-			position={[0, 1, 1]}
-			castShadow
-		/>		
-		<SC.Mesh
-			geometry={new THREE.BoxGeometry()}
-			material={new THREE.MeshStandardMaterial({ color: 0xff3e00 })}
-			scale={[1, 0.5, 0.5]}
-			position={[0, 0.001, 0]}
-			castShadow
-		/>
-		
-{#each boxes as bx}
-		<SC.Mesh
-			geometry={new THREE.BoxGeometry()}
-			material={new THREE.MeshStandardMaterial({ color: 0x3eff00 })}
-			scale={[bx, 1, 0.2]}
-			position={[0.5, 0.4, bx]}
-			castShadow
-		/>
-	{/each}
 
-	</SC.Group> -->
-
-	<Bike />
+	<Bike position={[0, 0.6, 0]} />
+	
+	<Bike position={[10, 0.6, 2]} />
 
 	<SC.PerspectiveCamera position={[10, 5, 10]} />
 	<SC.OrbitControls enableZoom={true} maxPolarAngle={Math.PI * 0.51} />
