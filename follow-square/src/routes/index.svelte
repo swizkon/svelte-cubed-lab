@@ -4,6 +4,15 @@
 	
 	import Bike from '../components/bike/Bike.svelte';
 
+	import { of } from "rxjs";
+  import { delay, startWith } from "rxjs/operators";
+
+  // emit an array with initial delay of 2s
+  const values = of([1, 2, 3, 4, 5]).pipe(
+    delay(2000),
+    startWith([])
+  );
+
 	let width = 1;
 	let height = 0.1;
 	let depth = 1;
@@ -11,7 +20,7 @@
 	let spin = 0;
 
 
-	let boxes = [1,1,2,1,1];
+	let bikes = [[0, 0, 0],[10, 0, 2]];
 
 	/*
 	SC.onFrame(() => {
@@ -44,9 +53,14 @@
 		/>
 	</SC.Group>
 
-	<Bike position={[0, 0.6, 0]} />
 	
-	<Bike position={[10, 0.6, 2]} />
+{#each $values as v}
+<Bike position={[0, 0, v]} />
+{/each}
+
+	<Bike position={[0, 0, 0]} />
+	
+	<Bike position={[10, 0, 2]} />
 
 	<SC.PerspectiveCamera position={[10, 5, 10]} />
 	<SC.OrbitControls enableZoom={true} maxPolarAngle={Math.PI * 0.51} />

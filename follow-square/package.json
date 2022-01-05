@@ -13,6 +13,7 @@
     "@types/three": "^0.134.0",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
+    "rxjs": "^7.5.1",
     "svelte": "^3.42.6"
   },
   "type": "module",
