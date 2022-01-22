@@ -9,6 +9,8 @@
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
   "devDependencies": {
+    "@aspnet/signalr": "^1.1.4",
+    "@microsoft/signalr": "^5.0.2",
     "@sveltejs/kit": "next",
     "@types/three": "^0.134.0",
     "prettier": "^2.4.1",
